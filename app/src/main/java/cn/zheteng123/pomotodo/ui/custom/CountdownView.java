@@ -25,6 +25,15 @@ import java.util.Locale;
  */
 public class CountdownView extends View {
 
+    /**
+     * 倒计时类型
+     */
+    public enum Type {
+        WORK, RELAX
+    }
+
+    private Type mType = Type.WORK;
+
     private Paint mPaint;
 
     /**
@@ -138,6 +147,10 @@ public class CountdownView extends View {
 
     public void setOnTimeOverListener(OnTimeOverListener onTimeOverListener) {
         mOnTimeOverListener = onTimeOverListener;
+    }
+
+    public void setType(Type type) {
+        mType = type;
     }
 
     /**
