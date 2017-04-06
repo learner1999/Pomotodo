@@ -57,6 +57,11 @@ public class CountdownView extends View {
     private boolean bFirst = true;
 
     /**
+     * 开始倒计时标志
+     */
+    private boolean bStart = false;
+
+    /**
      * 倒计时结束监听器
      */
     private OnTimeOverListener mOnTimeOverListener;
@@ -139,7 +144,7 @@ public class CountdownView extends View {
         mPaint.getTextBounds(strTime, 0, strTime.length(), mTextBound);
         canvas.drawText(strTime, getWidth() / 2 - mTextBound.width() / 2, getHeight() / 2 + mTextBound.height() / 2, mPaint);
 
-        if (bFirst) {
+        if (bStart && bFirst) {
             mHandler.post(mRunnable);
             bFirst = false;
         }
@@ -151,6 +156,14 @@ public class CountdownView extends View {
 
     public void setType(Type type) {
         mType = type;
+    }
+
+    /**
+     * 开始倒计时
+     */
+    public void startCountdown() {
+        bStart = true;
+        invalidate();
     }
 
     /**
