@@ -14,8 +14,13 @@
         <activity
             android:name=".ui.countdown.CountdownActivity"
             android:label="番茄钟">
+        </activity>
+        <activity
+            android:name=".ui.todolist.TodoActivity"
+            android:label="四象限">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
