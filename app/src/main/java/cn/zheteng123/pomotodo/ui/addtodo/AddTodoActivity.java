@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import cn.zheteng123.pomotodo.R;
@@ -33,6 +34,12 @@ public class AddTodoActivity extends BaseActivity {
         if (actionBar != null) {
             actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_add_todo, menu);
+        return true;
     }
 
     @Override
