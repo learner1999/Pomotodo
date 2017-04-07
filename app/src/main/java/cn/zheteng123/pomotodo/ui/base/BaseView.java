@@ -1,5 +1,7 @@
 package cn.zheteng123.pomotodo.ui.base;
 
+import android.content.Context;
+
 /**
  * <pre>
  *     author : learner1999
@@ -11,5 +13,5 @@ package cn.zheteng123.pomotodo.ui.base;
  */
 public interface BaseView {
 
-
+    Context getContext();
 }

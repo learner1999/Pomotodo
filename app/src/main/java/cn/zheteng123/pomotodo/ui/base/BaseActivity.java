@@ -27,6 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @Nullable
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
@@ -41,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract int getLayoutId();
 
-    private void initToolbar() {
+    protected void initToolbar() {
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
