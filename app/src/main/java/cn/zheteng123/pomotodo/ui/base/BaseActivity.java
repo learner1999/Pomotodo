@@ -22,7 +22,7 @@ import cn.zheteng123.pomotodo.R;
  *     version: 1.0
  * </pre>
  */
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -39,9 +39,7 @@ public class BaseActivity extends AppCompatActivity {
         initToolbar();
     }
 
-    protected int getLayoutId() {
-        return 0;
-    }
+    protected abstract int getLayoutId();
 
     private void initToolbar() {
         setSupportActionBar(mToolbar);
