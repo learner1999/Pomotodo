@@ -1,5 +1,7 @@
 package cn.zheteng123.pomotodo.ui.todolist;
 
+import cn.zheteng123.pomotodo.ui.addtodo.AddTodoActivity;
+
 /**
  * <pre>
  *     author : learner1999
@@ -16,5 +18,10 @@ public class TodoPresenter implements TodoContract.Presenter {
     @Override
     public void bindView(TodoContract.View view) {
         mView = view;
+    }
+
+    @Override
+    public void addTodo() {
+        AddTodoActivity.actionStart(mView.getContext());
     }
 }

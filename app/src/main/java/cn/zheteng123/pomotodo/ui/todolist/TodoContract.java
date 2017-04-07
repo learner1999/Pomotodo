@@ -20,5 +20,6 @@ public class TodoContract {
 
     interface Presenter extends BasePresenter<View> {
 
+        void addTodo();
     }
 }
