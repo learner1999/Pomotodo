@@ -12,9 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary"
-        android:padding="16dp">
+        android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -24,23 +22,32 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-        <cn.zheteng123.pomotodo.ui.custom.CountdownView
-            android:id="@+id/countdown_view"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_margin="10dp"
-            android:layout_gravity="center_horizontal"/>
-
-        <Button
-            android:id="@+id/btn_start"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="开始倒计时"/>
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_todo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            <cn.zheteng123.pomotodo.ui.custom.CountdownView
+                android:id="@+id/countdown_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"/>
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开始倒计时"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_todo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
