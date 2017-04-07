@@ -34,7 +34,9 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                app:ring_back_color="@color/colorPrimaryLight"
+                app:ring_fore_color="#FFF"/>
 
             <Button
                 android:id="@+id/btn_start"
