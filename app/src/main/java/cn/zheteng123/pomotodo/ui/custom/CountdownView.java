@@ -1,6 +1,7 @@
 package cn.zheteng123.pomotodo.ui.custom;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -13,6 +14,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.Locale;
+
+import cn.zheteng123.pomotodo.R;
 
 /**
  * <pre>
@@ -44,7 +47,7 @@ public class CountdownView extends View {
     /**
      * 倒计时总时间
      */
-    private int mTotalTime = 10;
+    private int mTotalTime = 25 * 60;
 
     /**
      * 倒计时剩余时间
@@ -60,6 +63,16 @@ public class CountdownView extends View {
      * 开始倒计时标志
      */
     private boolean bStart = false;
+
+    /**
+     * 倒计时环背景颜色（剩余时间颜色）
+     */
+    private int mRingBackColor;
+
+    /**
+     * 倒计时环前景颜色（已过去时间颜色）
+     */
+    private int mRingForeColor;
 
     /**
      * 倒计时结束监听器
@@ -94,23 +107,33 @@ public class CountdownView extends View {
     public CountdownView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
+        parseAttribute(attrs);
     }
 
     public CountdownView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
+        parseAttribute(attrs);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public CountdownView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
+        parseAttribute(attrs);
     }
 
     private void init() {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         mTextBound = new Rect();
+    }
+
+    private void parseAttribute(@Nullable AttributeSet attrs) {
+        TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.CountdownView);
+        mRingBackColor = ta.getColor(R.styleable.CountdownView_ring_back_color, Color.rgb(206, 77, 64));
+        mRingForeColor = ta.getColor(R.styleable.CountdownView_ring_fore_color, Color.WHITE);
+        ta.recycle();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -120,13 +143,13 @@ public class CountdownView extends View {
         int ringWidth = 35;
 
         // 画出环形底色部分
-        mPaint.setColor(Color.rgb(206, 77, 64));
+        mPaint.setColor(mRingBackColor);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(ringWidth);
         canvas.drawArc(ringWidth / 2, ringWidth / 2, getWidth() - ringWidth / 2, getHeight() - ringWidth / 2, 0, 360, false, mPaint);
 
         // 在环形底色上画出已过去的时间
-        mPaint.setColor(Color.WHITE);
+        mPaint.setColor(mRingForeColor);
         int rotateAngle = 360 * (mTotalTime - mRestSeconds) / mTotalTime;
         canvas.drawArc(ringWidth / 2, ringWidth / 2, getWidth() - ringWidth / 2, getHeight() - ringWidth / 2, -90, rotateAngle, false, mPaint);
 

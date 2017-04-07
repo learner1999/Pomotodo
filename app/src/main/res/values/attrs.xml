@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CountdownView">
+        <attr name="ring_back_color" format="color"/>
+        <attr name="ring_fore_color" format="color"/>
+    </declare-styleable>
+</resources>
