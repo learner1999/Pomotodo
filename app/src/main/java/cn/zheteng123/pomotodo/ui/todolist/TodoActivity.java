@@ -6,11 +6,16 @@ import android.view.Menu;
 import cn.zheteng123.pomotodo.R;
 import cn.zheteng123.pomotodo.ui.base.BaseActivity;
 
-public class TodoActivity extends BaseActivity {
+public class TodoActivity extends BaseActivity implements TodoContract.View {
+
+    private TodoContract.Presenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mPresenter = new TodoPresenter();
+        mPresenter.bindView(this);
     }
 
     @Override
