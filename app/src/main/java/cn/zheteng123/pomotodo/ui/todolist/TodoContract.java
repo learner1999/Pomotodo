@@ -1,5 +1,8 @@
 package cn.zheteng123.pomotodo.ui.todolist;
 
+import java.util.List;
+
+import cn.zheteng123.pomotodo.db.entity.TodoEntity;
 import cn.zheteng123.pomotodo.ui.base.BasePresenter;
 import cn.zheteng123.pomotodo.ui.base.BaseView;
 
@@ -16,10 +19,13 @@ public class TodoContract {
 
     interface View extends BaseView {
 
+        void showData(List<TodoEntity> todoEntityList0, List<TodoEntity> todoEntityList1, List<TodoEntity> todoEntityList2, List<TodoEntity> todoEntityList3);
     }
 
     interface Presenter extends BasePresenter<View> {
 
         void addTodo();
+
+        void readData();
     }
 }
