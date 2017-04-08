@@ -18,7 +18,7 @@ public class TodoEntity extends RealmObject {
     private int category;
 
     @PrimaryKey
-    private int id;
+    private String id;
 
     public String getName() {
         return name;
@@ -36,11 +36,20 @@ public class TodoEntity extends RealmObject {
         this.category = category;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "TodoEntity{" +
+                "name='" + name + '\'' +
+                ", category=" + category +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

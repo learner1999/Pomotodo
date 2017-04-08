@@ -23,11 +23,13 @@
         android:padding="16dp">
 
         <EditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/task_name"/>
         
         <RadioGroup
+            android:id="@+id/rg_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -40,16 +42,19 @@
                 android:text="@string/important_crash"/>
 
             <RadioButton
+                android:id="@+id/rb_important_uncrash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/important_uncrash"/>
 
             <RadioButton
+                android:id="@+id/rb_unimportant_crash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/unimportant_crash"/>
 
             <RadioButton
+                android:id="@+id/rb_unimportant_uncrash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/unimportant_uncrash"/>
