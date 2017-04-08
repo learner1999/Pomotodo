@@ -2,4 +2,9 @@
     <string name="app_name">Pomotodo</string>
     <string name="add_task">添加任务</string>
     <string name="confirm">确定</string>
+    <string name="important_crash">很重要-很紧急</string>
+    <string name="task_name">任务名称</string>
+    <string name="important_uncrash">很重要-不紧急</string>
+    <string name="unimportant_crash">不重要-很紧急</string>
+    <string name="unimportant_uncrash">不重要-不紧急</string>
 </resources>
