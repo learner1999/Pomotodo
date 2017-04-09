@@ -1,5 +1,6 @@
 package cn.zheteng123.pomotodo.ui.todolist.adapter;
 
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -46,7 +48,32 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    final List<TodoEntity> oldDataList = new ArrayList<>(mTodoEntityList);
                     mTodoEntityList.remove(todoEntity);
+
+                    // 通过 DiffUtil 优化数据更新效果
+                    DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new DiffUtil.Callback() {
+                        @Override
+                        public int getOldListSize() {
+                            return oldDataList.size();
+                        }
+
+                        @Override
+                        public int getNewListSize() {
+                            return mTodoEntityList.size();
+                        }
+
+                        @Override
+                        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+                            return oldDataList.get(oldItemPosition).equals(mTodoEntityList.get(newItemPosition));
+                        }
+
+                        @Override
+                        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+                            return oldDataList.get(oldItemPosition).equals(mTodoEntityList.get(newItemPosition));
+                        }
+                    });
+                    diffResult.dispatchUpdatesTo(TodoAdapter.this);
 
                     // 从数据库中删除
                     Realm realm = Realm.getDefaultInstance();
@@ -56,8 +83,6 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
                             todoEntity.deleteFromRealm();
                         }
                     });
-
-                    notifyDataSetChanged();
                 }
             }
         });
