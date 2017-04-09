@@ -47,7 +47,11 @@ public class TodoActivity extends BaseActivity implements TodoContract.View {
         mPresenter.bindView(this);
 
         initView();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         mPresenter.readData();
     }
 
@@ -103,6 +107,10 @@ public class TodoActivity extends BaseActivity implements TodoContract.View {
 
     @Override
     public void showData(List<TodoEntity> todoEntityList0, List<TodoEntity> todoEntityList1, List<TodoEntity> todoEntityList2, List<TodoEntity> todoEntityList3) {
+        mTodoEntityList0.clear();
+        mTodoEntityList1.clear();
+        mTodoEntityList2.clear();
+        mTodoEntityList3.clear();
         mTodoEntityList0.addAll(todoEntityList0);
         mTodoEntityList1.addAll(todoEntityList1);
         mTodoEntityList2.addAll(todoEntityList2);
