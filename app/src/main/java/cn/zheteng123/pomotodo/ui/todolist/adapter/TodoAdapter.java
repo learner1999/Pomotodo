@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.zheteng123.pomotodo.R;
 import cn.zheteng123.pomotodo.db.entity.TodoEntity;
+import io.realm.Realm;
 
 /**
  * <pre>
@@ -38,8 +40,27 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TodoEntity todoEntity = mTodoEntityList.get(position);
+        final TodoEntity todoEntity = mTodoEntityList.get(position);
         holder.cbFinish.setText(todoEntity.getName());
+        holder.cbFinish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mTodoEntityList.remove(todoEntity);
+
+                    // 从数据库中删除
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            todoEntity.deleteFromRealm();
+                        }
+                    });
+
+                    notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
