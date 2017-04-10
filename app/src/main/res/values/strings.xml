@@ -7,4 +7,6 @@
     <string name="important_uncrash">很重要-不紧急</string>
     <string name="unimportant_crash">不重要-很紧急</string>
     <string name="unimportant_uncrash">不重要-不紧急</string>
+    <string name="todolist">四象限</string>
+    <string name="pomodoro">番茄钟</string>
 </resources>

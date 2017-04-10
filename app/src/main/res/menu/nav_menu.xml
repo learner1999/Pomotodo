@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_todo"
+            android:icon="@drawable/ic_todolist"
+            android:title="@string/todolist"/>
+
+        <item
+            android:id="@+id/nav_pomodoro"
+            android:icon="@drawable/ic_timer"
+            android:title="@string/pomodoro"/>
+
+    </group>
+</menu>
