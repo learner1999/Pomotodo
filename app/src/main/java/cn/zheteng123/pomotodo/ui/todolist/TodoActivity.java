@@ -1,6 +1,7 @@
 package cn.zheteng123.pomotodo.ui.todolist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -119,5 +120,15 @@ public class TodoActivity extends BaseActivity implements TodoContract.View {
         mTodoAdapter1.notifyDataSetChanged();
         mTodoAdapter2.notifyDataSetChanged();
         mTodoAdapter3.notifyDataSetChanged();
+    }
+
+    @Override
+    protected int getNavCheckItem() {
+        return R.id.nav_todo;
+    }
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, TodoActivity.class);
+        context.startActivity(intent);
     }
 }

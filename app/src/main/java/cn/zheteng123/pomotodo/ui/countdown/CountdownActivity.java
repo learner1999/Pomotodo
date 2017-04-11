@@ -1,5 +1,7 @@
 package cn.zheteng123.pomotodo.ui.countdown;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,6 +39,16 @@ public class CountdownActivity extends BaseActivity {
 
         initView();
         initData();
+    }
+
+    @Override
+    protected int getNavCheckItem() {
+        return R.id.nav_pomodoro;
+    }
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, CountdownActivity.class);
+        context.startActivity(intent);
     }
 
     private void initData() {
